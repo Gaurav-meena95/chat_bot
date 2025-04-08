@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+
+}
+
+.nabar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  color: beige;
+  padding: 1.5vw;
+}
+
+
+.nav-link{
+  text-decoration: none;
+  padding: 3vw;
+  font-size: 2vw;
+  color: azure;
+  
+}
+.btn-login-nav{
+  background-color: aqua;
+  padding: 1vw 2vw;
+  border-radius: 0.2vw;
+  border: none;
+  font-size: 1.3vw;
+}
