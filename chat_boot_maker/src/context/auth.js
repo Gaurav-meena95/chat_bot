@@ -3,7 +3,7 @@ const { useState, createContext } = require("react")
 
 export const AuthContext = createContext(null)
 const AuthProvider = ({children})=>{
-  const [isloggin ,setIsloggin] = useState(false)
+  const [isloggin ,setIsloggin] = useState(true)
   return(
     <AuthContext.Provider value={{isloggin,setIsloggin}}>
       {children}
