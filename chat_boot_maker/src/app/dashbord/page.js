@@ -9,7 +9,7 @@ const Dashboard = () => {
   if (!isloggin) {
     return <>Please login</>;
   }
-  return <div>Ho gya login</div>;
+  return <div>Welcome to chat Bot app</div>;
 };
 
 export default Dashboard;

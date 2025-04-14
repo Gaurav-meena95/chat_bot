@@ -1,4 +1,5 @@
 'use client'
+import { signup } from '@/services/auth';
 import { useSearchParams } from 'next/navigation';
 import React, { useState } from 'react'
 
@@ -14,17 +15,23 @@ import React, { useState } from 'react'
       ...form,[fieldName]:fieldValue,
     })
   }
-  function handelsubmit(e){
-    e.preventDefault();
-    console.log(form)
+   async function handelsubmit(e){
+    try{
+      e.preventDefault();
+      let response = await signup ({email: form.email, password : form.password})
+      alert(response)
   }
+  catch(error){
+    alert (error);
+  }
+}
   return (
     <div>
       <h1>Sign Up Pages!!</h1>
       <form onChange={chandelchnage} onSubmit={handelsubmit}>
         <input type="email" name='email' placeholder='enter email' />
         <input type="password" name="password" id=""  placeholder='enter password'/>
-        <button type='submit'></button>
+        <button type='submit'>SinUp</button>
       </form>
     </div>
   )
