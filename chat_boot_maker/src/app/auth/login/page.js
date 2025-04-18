@@ -1,5 +1,5 @@
 "use client";
-import { useSearchParams } from "next/navigation";
+import { login } from "@/services/auth";
 import React, { useState } from "react";
 
 const Login = () => {
@@ -15,9 +15,16 @@ const Login = () => {
       [fieldName]: fieldValue,
     });
   }
-  function handelsubmit(e) {
-    e.preventDefault();
-    console.log(form);
+  async function handelsubmit(e) {
+    try {
+      e.preventDefault();
+      const response = await login(form);
+      const { token } = response;
+      localStorage.setItem("token", token);
+    } catch (error) {
+      console.log(error);
+      alert(error);
+    }
   }
   return (
     <div>

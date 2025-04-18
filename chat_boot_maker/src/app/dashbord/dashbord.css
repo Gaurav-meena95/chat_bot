@@ -1,0 +1,14 @@
+.todo{
+  display: flex;
+  flex-direction: column;
+  gap: 2vw;
+  width: 30vw;
+}
+.btn-todo{
+  width: 100%;
+  color: white;
+  background-color: rgb(40, 131, 243);
+  padding: 2vh;
+  border: none;
+  border-radius: 2vw;
+}
