@@ -19,4 +19,13 @@ body{
 .chatBoat_list{
   display: flex;
   justify-content: space-between;
+  background-color: rgb(135, 135, 136);
+}
+.visit{
+  background-color: rgb(35, 168, 35);
+  color:  white;
+  padding: 1vh 2vh;
+  margin-right:2vw ;
+  border-radius: 2vh;
+
 }

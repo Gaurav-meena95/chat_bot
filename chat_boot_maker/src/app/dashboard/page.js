@@ -1,10 +1,11 @@
 "use client";
 import { AuthContext } from "@/context/auth";
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import "./dashbord.css";
 import { useRouter } from "next/navigation";
-import { createChatbot } from "@/services/chatbot";
+import { createChatbot,getChatbots } from "@/services/chatbot";
 import { getToken } from "@/helpers/auth";
+
 
 const Dashboard = () => {
   const router = useRouter();
@@ -13,6 +14,12 @@ const Dashboard = () => {
   const [chatbots, setChatBot] = useState([]);
   const [botName, setBotName] = useState("");
   const [botContext, setBotContext] = useState("");
+
+useEffect(()=>{
+  getChatbots({token : getToken()}).then((res)=>{
+    setChatBot(res)
+  })
+},[])
   async function handleAddBot() {
     if (botName.trim() === "" || botContext.trim() === "") return;
     const newBot = {
@@ -62,7 +69,7 @@ const Dashboard = () => {
             <div className="chatBoat_list" key={idx}>
               <h2>{item.name}</h2>
               <h2>{item.context}</h2>
-              <button onClick={() => handleVisit(item.name)}>Visit</button>
+              <button className="visit" onClick={() => handleVisit(item.name)}>Visit</button>
             </div>
           );
         })}
