@@ -2,29 +2,39 @@
 import { AuthContext } from "@/context/auth";
 import React, { useContext, useRef, useState } from "react";
 import "./dashbord.css";
+import { useRouter } from "next/navigation";
+import { createChatbot } from "@/services/chatbot";
+import { getToken } from "@/helpers/auth";
 
 const Dashboard = () => {
+  const router = useRouter();
   const globalData = useContext(AuthContext);
   const isloggin = globalData.isloggin;
-  // const nameRef = useRef();
-  // const textRef = useRef();
   const [chatbots, setChatBot] = useState([]);
   const [botName, setBotName] = useState("");
   const [botContext, setBotContext] = useState("");
-
-  function handleAddBot() {
+  async function handleAddBot() {
     if (botName.trim() === "" || botContext.trim() === "") return;
     const newBot = {
       name: botName,
       context: botContext,
     };
     setChatBot((prev) => [...prev, newBot]);
+    await createChatbot({
+      name: botName,
+      context: botContext,
+      token: getToken(),
+    });
     setBotName("");
     setBotContext("");
   }
-
+  console.log(chatbots);
   if (!isloggin) {
     return <>Please login</>;
+  }
+
+  function handleVisit(chatBotName) {
+    router.push(`/chatbot/${chatBotName}`);
   }
   return (
     <>
@@ -46,7 +56,16 @@ const Dashboard = () => {
         </button>
       </div>
       <div className="chatprint">
-        <h1>Your Chats</h1>
+        <h1>Your ChatsBot</h1>
+        {chatbots.map((item, idx) => {
+          return (
+            <div className="chatBoat_list" key={idx}>
+              <h2>{item.name}</h2>
+              <h2>{item.context}</h2>
+              <button onClick={() => handleVisit(item.name)}>Visit</button>
+            </div>
+          );
+        })}
       </div>
     </>
   );

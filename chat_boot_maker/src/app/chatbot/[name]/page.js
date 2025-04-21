@@ -1,9 +1,14 @@
+"use client";
+import { useParams } from 'next/navigation';
 import React from 'react'
 
-const Page = () => {
+async function Page(){
+  const params = useParams();
   return (
-    <h1>This Chat bot</h1>
+    <div>
+      <h1>{params.name}</h1>
+    </div>
   )
-}
+} 
 
-export default Page
+export default Page;

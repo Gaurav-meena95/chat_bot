@@ -2,7 +2,7 @@
 
 import { isUserLoggedIn } from "@/helpers/auth";
 
-const { useState, createContext, useEffect } = require("react");
+import { useState, createContext, useEffect } from "react";
 
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
