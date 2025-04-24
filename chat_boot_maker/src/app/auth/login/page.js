@@ -1,8 +1,10 @@
 "use client";
 import { login } from "@/services/auth";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const Login = () => {
+  const router = useRouter();
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -21,6 +23,7 @@ const Login = () => {
       const response = await login(form);
       const { token } = response;
       localStorage.setItem("token", token);
+      router.push("/dashboard");
     } catch (error) {
       console.log(error);
       alert(error);

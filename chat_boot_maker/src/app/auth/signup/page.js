@@ -19,7 +19,7 @@ import React, { useState } from 'react'
     try{
       e.preventDefault();
       let response = await signup ({email: form.email, password : form.password})
-      alert(response)
+      alert(response.message)
   }
   catch(error){
     alert (error);
