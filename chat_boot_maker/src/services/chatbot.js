@@ -29,3 +29,13 @@ export const createChatbot = async ({ name, context, token }) => {
   }
   return response;
 };
+
+export const getAll = async () => {
+  const response = await fetch("api/chatbot/getAll");
+  if (!response.ok) {
+    const { error } = await response.json();
+    console.log(error);
+    throw new Error(error || "Failed to Load Chat Boat");
+  }
+  return response;
+};

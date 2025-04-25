@@ -1,9 +1,12 @@
 "use client";
+import { AuthContext } from "@/context/auth";
 import { login } from "@/services/auth";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 const Login = () => {
+  const { setIsloggin } = useContext(AuthContext);
+
   const router = useRouter();
   const [form, setForm] = useState({
     email: "",
@@ -24,6 +27,7 @@ const Login = () => {
       const { token } = response;
       localStorage.setItem("token", token);
       router.push("/dashboard");
+      setIsloggin(true);
     } catch (error) {
       console.log(error);
       alert(error);
@@ -42,6 +46,9 @@ const Login = () => {
         />
         <button type="submit">Login</button>
       </form>
+      <p>
+        Don't have an account ? <a href="/auth/signup">Signup</a> First
+      </p>
     </div>
   );
 };

@@ -31,7 +31,7 @@ import React, { useState } from 'react'
       <form onChange={chandelchnage} onSubmit={handelsubmit}>
         <input type="email" name='email' placeholder='enter email' />
         <input type="password" name="password" id=""  placeholder='enter password'/>
-        <button type='submit'>SinUp</button>
+        <button type='submit'>SignUp</button>
       </form>
     </div>
   )
