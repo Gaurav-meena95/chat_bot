@@ -1,10 +1,5 @@
 [
   {
-    "name": "pet",
-    "context": "dog\n",
-    "creator": "gaurav.meena2024@nst.rishihood.edu.in"
-  },
-  {
     "name": "hello ",
     "context": "kutta hai tu",
     "creator": "nstAdmin@gmail.com"
@@ -12,5 +7,13 @@
   {
     "name": "ram Ram",
     "context": "jai shree ram"
+  },
+  {
+    "name": "pet",
+    "context": "the name of my dog is lucky."
+  },
+  {
+    "name": "gaurav",
+    "context": "My name is gaurav MeeNA"
   }
 ]
