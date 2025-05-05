@@ -3,9 +3,8 @@ import { AuthContext } from "@/context/auth";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import "./dashbord.css";
 import { useRouter } from "next/navigation";
-import { createChatbot,getChatbots } from "@/services/chatbot";
+import { createChatbot, getChatbots } from "@/services/chatbot";
 import { getToken } from "@/helpers/auth";
-
 
 const Dashboard = () => {
   const router = useRouter();
@@ -15,11 +14,11 @@ const Dashboard = () => {
   const [botName, setBotName] = useState("");
   const [botContext, setBotContext] = useState("");
 
-useEffect(()=>{
-  getChatbots({token : getToken()}).then((res)=>{
-    setChatBot(res)
-  })
-},[])
+  useEffect(() => {
+    getChatbots({ token: getToken() }).then((res) => {
+      setChatBot(res);
+    });
+  }, []);
   async function handleAddBot() {
     if (botName.trim() === "" || botContext.trim() === "") return;
     const newBot = {
@@ -69,7 +68,9 @@ useEffect(()=>{
             <div className="chatBoat_list" key={idx}>
               <h2>{item.name}</h2>
               <h2>{item.context}</h2>
-              <button className="visit" onClick={() => handleVisit(item.name)}>Visit</button>
+              <button className="visit" onClick={() => handleVisit(item.name)}>
+                Visit
+              </button>
             </div>
           );
         })}
