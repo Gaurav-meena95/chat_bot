@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import React, { useContext } from "react";
-import "./Navbar.css";
 import { AuthContext } from "@/context/auth";
 import { useRouter } from "next/navigation";
 import { logout } from "@/services/auth";
@@ -23,11 +22,11 @@ export default function Navbar() {
     setIsloggin(false)
   }
   return (
-    <div className="nabar">
+    <div className="nabar bg-violet-500 flex justify-between items-center p-4">
       <div className="logo">
         <h1>My App</h1>
       </div>
-      <div className="link">
+      <div className="link flex gap-20">
         <Link className="nav-link" href="/home">
           Home
         </Link>
@@ -41,7 +40,10 @@ export default function Navbar() {
         Explore
         </Link>
 
-        {isloggin ? (
+       
+      </div>
+      <div>
+      {isloggin ? (
           <button onClick={handelLogout} className="btn-login-nav">
             Logout
           </button>
